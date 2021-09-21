@@ -1,27 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import ResultsList from '../ResultsList/ResultsList';
-import cocktailsTemp from './temp';
+import Cocktails from '../../utils/Cocktails';
 import './App.css';
 
 const App = () => {
-  const [searchResults, setSearchResults] = useState(cocktailsTemp);
+  const [searchResults, setSearchResults] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const handleSearch = (term) => {
-    console.log(term);
+  useEffect(() => {
+    handleSearch('');
+  }, []);
+
+  const handleSearch = async (term) => {
+    setLoading(true);
+    Cocktails.getData(term).then((response) => {
+      setSearchResults(response);
+      setLoading(false);
+
+      if (response.length === 0) {
+        console.log('nothing here');
+      }
+    });
   };
 
   return (
     <main className='main-container'>
       <div className='header-ctr'>
-        <h1>Cocktail Finder</h1>
+        <h1>Cocktail Finder &#127864;</h1>
         <SearchBar handleSearch={handleSearch} />
       </div>
-      <ResultsList results={searchResults} />
+      <ResultsList results={searchResults} isLoading={loading} />
       <footer>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, veniam.
-        </p>
+        <p>Attention! Alcohol may cause damage to health.</p>
       </footer>
     </main>
   );

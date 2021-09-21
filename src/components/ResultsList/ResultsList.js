@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ResultsList.css';
 
 const ResultsList = (props) => {
+  const [isModalOn, setIsModalOn] = useState(true);
+
+  if (props.isLoading) {
+    return (
+      <section className='results-ctr'>
+        <h2>Loading...</h2>
+      </section>
+    );
+  }
+
   return (
     <section className='results-ctr'>
-      <h2>Results: </h2>
+      <h2>Cocktails found: {props.results.length}</h2>
       <ul>
         {props.results.map((result) => {
           return (
@@ -15,6 +25,11 @@ const ResultsList = (props) => {
           );
         })}
       </ul>
+      {isModalOn && (
+        <div className='modal'>
+          <h1>MODAL</h1>
+        </div>
+      )}
     </section>
   );
 };

@@ -23,7 +23,7 @@ const SearchBar = (props) => {
         className='input-field'
         onChange={handleChange}
       />
-      <input type='submit' value='Find!' className='submit-btn' />
+      <input type='submit' value='&#128269;' className='submit-btn' />
     </form>
   );
 };
