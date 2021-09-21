@@ -1,0 +1,36 @@
+.main-container {
+  width: 1280px;
+  min-width: 80%;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-ctr {
+  width: 100%;
+  background-color: tomato;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin: 20px 0px 15px 0px;
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  word-spacing: 10px;
+}
+
+footer {
+  width: 100%;
+  height: 50px;
+  background-color: tomato;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
