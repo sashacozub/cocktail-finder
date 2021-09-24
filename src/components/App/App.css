@@ -20,7 +20,7 @@
   box-shadow: 0px 2px 5px rgb(110, 110, 110);
 }
 
-h1 {
+.header-ctr h1 {
   font-size: 4.5rem;
   font-weight: 700;
   letter-spacing: 2px;
