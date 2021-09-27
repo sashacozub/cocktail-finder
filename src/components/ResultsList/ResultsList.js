@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ResultsList.css';
 import Modal from '../Modal/Modal';
 
 const ResultsList = (props) => {
   const [isModalOn, setIsModalOn] = useState(false);
   const [selectedCocktail, setSelectedCocktail] = useState({});
+
+  useEffect(() => {
+    isModalOn
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'unset');
+  }, [isModalOn]);
 
   const handleModalOpening = (e) => {
     const clickedCocktail = props.results.filter((result) => {
