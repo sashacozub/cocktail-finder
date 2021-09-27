@@ -7,20 +7,20 @@ import './App.css';
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [gotResults, setGotResults] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     handleSearch('');
   }, []);
 
   const handleSearch = async (term) => {
+    setSearchTerm(term);
     setLoading(true);
     Cocktails.getData(term).then((response) => {
       setSearchResults(response);
       setLoading(false);
-
-      if (response.length === 0) {
-        console.log('nothing here');
-      }
+      response.length === 0 ? setGotResults(false) : setGotResults(true);
     });
   };
 
@@ -30,7 +30,12 @@ const App = () => {
         <h1>Cocktail Finder &#127864;</h1>
         <SearchBar handleSearch={handleSearch} />
       </div>
-      <ResultsList results={searchResults} isLoading={loading} />
+      <ResultsList
+        results={searchResults}
+        isLoading={loading}
+        gotResults={gotResults}
+        searchTerm={searchTerm}
+      />
       <footer>
         <p>Attention! Alcohol may cause damage to health.</p>
       </footer>

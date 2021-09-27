@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ResultsList.css';
+import Modal from '../Modal/Modal';
 
 const ResultsList = (props) => {
   const [isModalOn, setIsModalOn] = useState(false);
@@ -28,10 +29,16 @@ const ResultsList = (props) => {
   return (
     <section className='results-ctr'>
       <h2>Cocktails found: {props.results.length}</h2>
-      <ul>
+      <ul className='cocktail-boxes-ctr'>
+        {props.gotResults === false && (
+          <h3>
+            Couldn't find any results for "{props.searchTerm}"
+            <br /> Please try another name!
+          </h3>
+        )}
         {props.results.map((result) => {
           return (
-            <li key={result.id}>
+            <li key={result.id} className='cocktail-box'>
               <h3>{result.name}</h3>
               <img
                 src={result.photo}
@@ -44,34 +51,10 @@ const ResultsList = (props) => {
       </ul>
 
       {isModalOn && (
-        <div className='modal'>
-          <div className='cocktail-info'>
-            <button className='close-modal-btn' onClick={handleModalClosing}>
-              X
-            </button>
-            <h2>{selectedCocktail.name}</h2>
-            <img src={selectedCocktail.photo} alt={selectedCocktail.name} />
-            <div className='cocktail-description'>
-              <p>
-                <strong>Glass:</strong> {selectedCocktail.glass}
-              </p>
-              <p>
-                <strong>Procedure:</strong> {selectedCocktail.procedure}
-              </p>
-              <p>
-                <strong>Ingredients:</strong>
-              </p>
-              <p>{selectedCocktail.ingredients.ingredient_1}</p>
-              <p>{selectedCocktail.ingredients.ingredient_2}</p>
-              <p>{selectedCocktail.ingredients.ingredient_3}</p>
-              <p>{selectedCocktail.ingredients.ingredient_4}</p>
-              <p>{selectedCocktail.ingredients.ingredient_5}</p>
-              <p>{selectedCocktail.ingredients.ingredient_6}</p>
-              <p>{selectedCocktail.ingredients.ingredient_7}</p>
-              <p>{selectedCocktail.ingredients.ingredient_8}</p>
-            </div>
-          </div>
-        </div>
+        <Modal
+          selectedCocktail={selectedCocktail}
+          handleModalClosing={handleModalClosing}
+        />
       )}
     </section>
   );
