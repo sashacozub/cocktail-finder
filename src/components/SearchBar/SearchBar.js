@@ -6,12 +6,12 @@ const SearchBar = (props) => {
 
   const handleChange = ({ target }) => {
     setTerm(target.value);
+    props.handleSearch(target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     props.handleSearch(term);
-    setTerm('');
   };
 
   return (

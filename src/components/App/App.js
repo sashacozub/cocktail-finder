@@ -7,11 +7,11 @@ import './App.css';
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [gotResults, setGotResults] = useState(false);
+  const [gotResults, setGotResults] = useState(true); // Display "no results found" if false.
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    handleSearch('');
+    handleSearch(''); // Preload cocktails.
   }, []);
 
   const handleSearch = async (term) => {

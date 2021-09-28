@@ -4,11 +4,11 @@ import Modal from '../Modal/Modal';
 
 const ResultsList = (props) => {
   const [isModalOn, setIsModalOn] = useState(false);
-  const [selectedCocktail, setSelectedCocktail] = useState({});
+  const [selectedCocktail, setSelectedCocktail] = useState({}); // Selected coktail for modal.
 
   useEffect(() => {
     isModalOn
-      ? (document.body.style.overflow = 'hidden')
+      ? (document.body.style.overflow = 'hidden') // Prevent background scroll when modal open.
       : (document.body.style.overflow = 'unset');
   }, [isModalOn]);
 

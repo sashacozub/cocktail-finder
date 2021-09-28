@@ -1,25 +1,24 @@
 import React from 'react';
 import './Modal.css';
 
-const Modal = (props) => {
-  const cocktail = props.selectedCocktail;
-  const ingredients = cocktail.ingredients;
-  const measurements = cocktail.measurements;
+const Modal = ({ selectedCocktail, handleModalClosing }) => {
+  const cocktail = selectedCocktail;
+  const { ingredients, measurements, name, photo, glass, procedure } = cocktail;
 
   return (
     <div className='modal'>
       <div className='cocktail-info'>
-        <button className='close-modal-btn' onClick={props.handleModalClosing}>
-          X
+        <button className='close-modal-btn' onClick={handleModalClosing}>
+          <strong>X</strong>
         </button>
-        <h2>{cocktail.name}</h2>
-        <img src={cocktail.photo} alt={cocktail.name} />
+        <h2>{name}</h2>
+        <img className='modal-img' src={photo} alt={name} />
         <div className='cocktail-description'>
           <p>
-            <strong>Glass:</strong> {cocktail.glass}
+            <strong>Glass:</strong> {glass}
           </p>
           <p>
-            <strong>Procedure:</strong> {cocktail.procedure}
+            <strong>Procedure:</strong> {procedure}
           </p>
           <p>
             <strong>Ingredients:</strong>
