@@ -22,6 +22,7 @@ const ResultsList = (props) => {
 
   const handleModalClosing = () => {
     setIsModalOn(false);
+    setSelectedCocktail({});
   };
 
   if (props.isLoading) {
