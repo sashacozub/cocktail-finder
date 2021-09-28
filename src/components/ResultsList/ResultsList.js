@@ -20,9 +20,16 @@ const ResultsList = (props) => {
     setIsModalOn(true);
   };
 
-  const handleModalClosing = () => {
-    setIsModalOn(false);
-    setSelectedCocktail({});
+  const handleModalClosing = (e) => {
+    // console.log(e);
+    if (
+      e.target.className === 'modal' ||
+      e.target.className === 'close-modal-btn' ||
+      e.target.parentElement.className === 'close-modal-btn'
+    ) {
+      setIsModalOn(false);
+      setSelectedCocktail({});
+    }
   };
 
   if (props.isLoading) {

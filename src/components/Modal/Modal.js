@@ -6,7 +6,7 @@ const Modal = ({ selectedCocktail, handleModalClosing }) => {
   const { ingredients, measurements, name, photo, glass, procedure } = cocktail;
 
   return (
-    <div className='modal'>
+    <div className='modal' onClick={handleModalClosing}>
       <div className='cocktail-info'>
         <button className='close-modal-btn' onClick={handleModalClosing}>
           <strong>X</strong>
