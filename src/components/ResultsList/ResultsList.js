@@ -42,7 +42,7 @@ const ResultsList = (props) => {
 
   return (
     <section className='results-ctr'>
-      <h2>Cocktails found: {props.results.length}</h2>
+      <h2>Cocktails found: {(props.results ? props.results.length : 0)}</h2>
       <ul className='cocktail-boxes-ctr'>
         {props.gotResults === false && (
           <h3>
