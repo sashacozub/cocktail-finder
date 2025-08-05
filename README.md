@@ -21,5 +21,3 @@ This app uses free external API to fetch the data. It is a very simple app where
 - ReactJS
 - CSS
 - AJAX
-
-## [Live version](https://cocktail-finder-sc.netlify.app/)
